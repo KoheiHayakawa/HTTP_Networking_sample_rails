@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_one :apikey
 
-  after_save :create_api_key
+  after_save :create_apikey
 
   has_secure_password
   validates :email, uniqueness: true

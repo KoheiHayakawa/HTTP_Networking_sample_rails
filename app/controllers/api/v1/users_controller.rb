@@ -1,6 +1,6 @@
 # coding: utf-8
 class Api::V1::UsersController < ApiController 
-  skip_before_filter  :verify_authenticity_token
+#  skip_before_filter  :verify_authenticity_token
 
   # POST /v1/users/sign_up
   # account登録とaccess_tokenを生成

@@ -1,2 +1,3 @@
-json.id @user.id
-json.access_token @apikey.access_token
+json.extract! @user, :id, :email
+json.access_token @user.apikey.access_token
+
