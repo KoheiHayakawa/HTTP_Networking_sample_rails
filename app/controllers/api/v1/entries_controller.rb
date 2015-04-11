@@ -1,6 +1,6 @@
 # coding: utf-8
 class Api::V1::EntriesController < ApiController 
-  #skip_before_filter  :verify_authenticity_token
+  before_filter :restrict_access_user
 
   # GET /v1/entries
   def index

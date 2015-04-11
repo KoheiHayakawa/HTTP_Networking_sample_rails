@@ -1,10 +1,10 @@
 # coding: utf-8
 class ApiController < ApplicationController
 
-  #helper_method [:restrict_access_user, :restrict_access_shop, :restrict_access_user_and_shop]
+  helper_method [:restrict_access_user]
 
-  #rescue_from Exception, with: :error500
-  #rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
+  rescue_from Exception, with: :error500
+  rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
 
 
   def error401(messages)
@@ -45,21 +45,7 @@ class ApiController < ApplicationController
     def restrict_access_user
       authenticate_or_request_with_http_token do |token, options|
         @token = token
-        ApiKey.exists?(access_token: token)
-      end
-    end
-
-    def restrict_access_shop
-      authenticate_or_request_with_http_token do |token, options|
-        @token = token
-        ApiKeyForShop.exists?(access_token: token)
-      end
-    end
-
-    def restrict_access_user_and_shop
-      authenticate_or_request_with_http_token do |token, options|
-        @token = token
-        ApiKey.exists?(access_token: token) || ApiKeyForShop.exists?(access_token: token)
+        Apikey.exists?(access_token: token)
       end
     end
 
