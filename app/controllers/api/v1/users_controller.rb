@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApiController
     if @user.save
       render
     else
-      error422 @user.errors.full_messages
+      error422 @user.full_messages
     end
   end
 
